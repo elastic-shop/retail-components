@@ -1,0 +1,11 @@
+{
+  "name": "@pomkaize/common",
+  "version": "1.0.1",
+  "description": "common UI react Library",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pomkaize/common.git"
+  }
+}
