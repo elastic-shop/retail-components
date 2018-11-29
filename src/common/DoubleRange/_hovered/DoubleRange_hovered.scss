@@ -1,0 +1,13 @@
+@import "../../../variables";
+
+.DoubleRange_hovered {
+  .DoubleRange-Container:hover {
+    .DoubleRange-Gradient::after, .DoubleRange-Gradient:before {
+      border-color: $inputBorderHoverColor;
+    }
+  }
+
+  .Range-Thumb:hover {
+    cursor: pointer;
+  }
+}

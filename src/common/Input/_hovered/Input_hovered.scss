@@ -1,0 +1,15 @@
+@import "../../../variables";
+.Input_hovered:hover {
+  .Input-Label {
+    cursor: pointer;
+  }
+  .Input-Label:before {
+     border-color: $inputBorderHoverColor;
+  }
+  .Input-Inner {
+    border-color: $inputBorderHoverColor;
+  }
+  .Input-Inner:not([type='text']) + .Input-Label  {
+      color: $inputBorderFocusColor;
+  }
+}

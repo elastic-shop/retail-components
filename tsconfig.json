@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": ["node", "react", "react-dom"]
+  },
+  "exclude": [
+    "../node_modules",
+    "./**/*__deprecated*"
+  ],
+  "include": ["./src/common/**/*.tsx", "./src/common/**/*.ts"]
+}

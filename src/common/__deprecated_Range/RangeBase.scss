@@ -1,0 +1,110 @@
+@import "../../variables";
+@import "../../mixins";
+
+/* focused */
+.Range_focused {
+  .Range-Thumb::-webkit-slider-thumb {
+    border-color: $inputBorderFocusColor!important;
+  }
+  .Range-Thumb::-moz-range-thumb {
+    border-color: $inputBorderFocusColor!important;
+  }
+}
+
+.Range-Thumb:focus {
+  outline: none;
+}
+
+
+.Range-Thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -moz-appearance: none;
+  width: 100%;
+  position: absolute;
+  background: transparent;
+  height: $thumbHeight;
+  order: 1;
+  outline: none;
+  @include input-range-thumb-common() {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: $inputTransition;
+    border-radius: $thumbHeight/2;
+    background: $thumbColor;
+    border: $inputBorderWidth solid $thumbBorder;
+    cursor: ew-resize;
+  }
+  @include input-range-thumb-common(ch) {
+    height: $thumbHeight;
+    width: $thumbWidth;
+  }
+  @include input-range-thumb-common(moz ie) {
+    height: $thumbHeight - 4px;
+    width: $thumbWidth - 4px;
+  }
+  @include input-range-track-common(moz) {
+    background: transparent;
+  }
+}
+
+
+.Range {
+  .Range-Container {
+    position: relative;
+    margin-top: 10px;
+    height: 20px;
+  }
+
+  .Range-Label {
+    color: #555;
+    user-select: none;
+    order: 0;
+    padding-bottom: 5px;
+  }
+
+  .Range-Track {
+    -webkit-appearance: none;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    height: $trackHeight;
+    top:7px;
+    overflow: hidden;
+    order: 1;
+    outline: none;
+    @include input-range-track-common(moz ch) {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      height: $trackHeight;
+      cursor: pointer;
+      background-color: $trackBase;
+    }
+    @include input-range-thumb-common(ch) {
+      -webkit-appearance: none;
+      height: 0;
+      width: 0;
+      box-shadow: -160px 0 0 160px $trackLight;
+    }
+  }
+
+  @-moz-document url-prefix() {
+    .Range-Track, .Range-Thumb {
+      left: -$thumbHeight/2
+    }
+  }
+  /* progress colors for other browsers*/
+  .Range-Track::-moz-range-progress {
+    height: $trackHeight;
+    background:$trackLight;
+  }
+
+  .Range-Track::-ms-fill-lower {
+    height: $trackHeight;
+    background-color: $trackLight;
+  }
+  .Range-Track::-ms-fill-upper {
+    height: $trackHeight;
+    background-color: $trackBase;
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../variables";
+.Input {
+  width: 100%;
+  display: flex;
+  font-family: $baseFont;
+  font-size: 14px;
+  color: $grey;
+  transition: $inputTransition;
+  user-select: none;
+  flex-direction: column;
+}
+
+.Input-Inner {
+  font-family: inherit;
+  transition: $inputTransition;
+  font-size: inherit;
+  color: inherit;
+}
+
+.Input-Label {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+

@@ -1,0 +1,31 @@
+@import "../../../variables";
+
+.Input_type_checkbox {
+  flex-direction: row;
+
+  .Input-Inner {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .Input-Label {
+    &:before {
+      transition: $inputTransition;
+      content: "";
+      border: $inputBorder;
+      display: flex;
+      color: $inputBorderFocusColor;
+      align-items: center;
+      justify-content: center;
+      height: 14px;
+      width: 14px;
+      margin-right: 10px;
+    }
+    display: flex;
+    align-items: center;
+  }
+  .Input-Inner[type="checkbox"]:checked+.Input-Label:before {
+    content: "✓";
+  }
+}

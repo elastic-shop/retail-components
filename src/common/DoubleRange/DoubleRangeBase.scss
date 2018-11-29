@@ -1,0 +1,99 @@
+@import "../../variables";
+@import "../../mixins";
+
+/* focused */
+.DoubleRange_focused {
+  .DoubleRange-Gradient::after, .DoubleRange-Gradient:before {
+    border-color: $inputBorderFocusColor !important;
+  }
+}
+
+
+.DoubleRange {
+  -webkit-tap-highlight-color: transparent;
+  .DoubleRange-Container {
+    position: relative;
+    margin-top: 10px;
+    height: $thumbHeight;
+  }
+
+  .DoubleRange-Label {
+    color: #555;
+    user-select: none;
+    order: 0;
+    padding-bottom: 5px;
+    @include no-select;
+  }
+
+  .DoubleRange-Track {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    left: 0;
+    display: inline-block;
+    position: absolute;
+    height: $thumbHeight;
+    background: transparent;
+    order: 1;
+    cursor: pointer;
+    outline: none;
+    @include input-range-track-common(moz ch) {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      height: 2px;
+      background: transparent;
+    }
+    @include  input-range-track-common(ie) {
+      height: 0;
+      background-color: transparent;
+    }
+    @include input-range-thumb-common() {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      height: 0;
+      width: 0;
+      visibility: hidden;
+      background: transparent;
+    }
+  }
+  .DoubleRange-Gradient {
+    left: 2px;
+    top: calc(50% - 1px);
+    position: absolute;
+    display: flex;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: $trackHeight;
+    background-color: $trackBase;
+    margin: auto;
+    &::before, &::after {
+      position: relative;
+      transition: $inputTransition;
+      content: '';
+      top: -$thumbWidth / 2 - $inputBorderWidth/2;
+      border-radius: $thumbHeight;
+      display: block;
+      min-width: $thumbHeight;
+      flex-basis: $trackHeight;
+      height: $thumbHeight;
+      background-color: $thumbColor;
+      border: $inputBorder;
+      &:hover {
+      cursor: ew-resize;
+    }
+    }
+    &::after {
+      left:calc(100%);
+      transform: translateX(-$thumbWidth * 2.5);
+    }
+  }
+  @-moz-document url-prefix() {
+    .DoubleRange-Track, .DoubleRange-Thumb {
+      left: -$thumbHeight/2
+    }
+    .DoubleRange-Gradient {
+      top: calc(50% - 2px);
+    }
+  }
+}

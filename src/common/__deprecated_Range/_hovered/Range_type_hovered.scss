@@ -1,0 +1,18 @@
+@import "../../../variables";
+
+.Range_hovered {
+  .Range-Container:hover {
+
+    .Range-Thumb::-moz-range-thumb {
+      border-color: $inputBorderHoverColor;
+    }
+    .Range-Thumb::-webkit-slider-thumb {
+
+      border-color: $inputBorderHoverColor;
+    }
+  }
+
+  .Range-Thumb:hover {
+    cursor: pointer;
+  }
+}

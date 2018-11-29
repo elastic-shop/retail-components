@@ -1,0 +1,21 @@
+.PriceFilter-Inputs {
+  display: flex;
+  width: 100%;
+}
+
+.PriceFilter-ContainerLeft {
+  width: 50%;
+  .Input-Inner {
+    margin-right: 20px;
+  }
+}
+
+.PriceFilter-ContainerRight {
+  width: 50%;
+  .Input-Label {
+    text-align: right;
+  }
+  .Input-Inner {
+    margin-left: 20px;
+  }
+}

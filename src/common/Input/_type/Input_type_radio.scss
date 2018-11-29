@@ -1,0 +1,33 @@
+@import "../../../variables";
+
+.Input_type_radio {
+  flex-direction: row;
+
+  .Input-Inner {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .Input-Label {
+    &:before {
+      content: "";
+      transition: $inputTransition;
+      border: $inputBorder;
+      color: $inputBorderFocusColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 14px;
+      border-radius: 9px;
+      width: 14px;
+      margin-right: 10px;
+      font-size: 38px;
+    }
+    display: flex;
+    align-items: center;
+  }
+  .Input-Inner[type="radio"]:checked+.Input-Label:before {
+    content: "·";
+  }
+}
