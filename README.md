@@ -15,4 +15,4 @@
 npm i -g typescript
 npm install
 Для разработки: npm dev
-Для сборки: npm tsc
+Для сборки: npm build
