@@ -6,6 +6,7 @@ $bred:#d91624;
 $grey:#676767;
 $lightGray: #d8d8d8;
 $white: #fff;
+$hoverColor: #aaaaaa;
 $black: #252525;
 
 
@@ -20,7 +21,7 @@ $bigDesktop: 1920px;
 $baseFont: "Calibri, sans-serif";
 
 /* inputs */
-$inputBorderHoverColor: $grey;
+$inputBorderHoverColor: $hoverColor;
 $inputBorderFocusColor: $red;
 $inputBorderWidth: 2px;
 $inputBorderType: solid;

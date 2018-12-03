@@ -47,7 +47,7 @@ export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
         }
     }
     public render() {
-        const {id, className, leftVal, rightVal, text, min, max, change, hovered, focused, ...otherProps} = this.props
+        const {id, className, leftVal, rightVal, text, min, max, lightColor, baseColor, change, hovered, focused, ...otherProps} = this.props
         let firstStopVal = Math.max(Math.round((leftVal - min) / (max - min) * 100), 0)
         let secondStopVal = Math.min(Math.round((rightVal - min) / (max - min) * 100), 100)
         if (secondStopVal < 0) {

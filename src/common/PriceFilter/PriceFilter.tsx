@@ -1,29 +1,47 @@
 import * as React from "react"
 import {cn} from "@bem-react/classname"
-import {DoubleRange} from "../../common/DoubleRange"
-import {Input} from "../../common/Input"
+import {DoubleRange} from "../DoubleRange"
+import {Input} from "../Input"
+import PropTypes from "prop-types"
 import "./PriceFilter.scss"
-import {IPropsDoubleRangeController} from "../../common/DoubleRange/DoubleRangeBase"
+import {IPropsDoubleRangeController} from "../DoubleRange/DoubleRangeBase"
 
 const cnPriceFilter = cn("PriceFilter")
 
-export interface IStateRangeController {
+export interface IPropsRangeController {
     min: number,
     max: number,
     leftVal: number,
     rightVal: number,
-    mobile?: boolean
+    baseColor?: string,
+    lightColor?: string,
+    change: (data: any) => void
+    hovered: boolean,
+    focused: boolean
 }
 
-export default class PriceFilter extends React.Component<{}, IStateRangeController> {
-    constructor(state: IStateRangeController) {
-        super(state)
+export interface IStateRangeController {
+    leftTempVal: number,
+    rightTempVal: number,
+}
+
+export default class PriceFilter extends React.Component<IPropsRangeController, IStateRangeController> {
+    public static propTypes = {
+        min: PropTypes.number.isRequired,
+        max: PropTypes.number.isRequired,
+        leftVal: PropTypes.number.isRequired,
+        rightVal: PropTypes.number.isRequired,
+        baseColor: PropTypes.string,
+        lightColor: PropTypes.string,
+        hovered: PropTypes.bool.isRequired,
+        focused: PropTypes.bool.isRequired,
+        change: PropTypes.func.isRequired,
+    }
+    constructor(props: IPropsRangeController) {
+        super(props)
         this.state = {
-            min: 1000,
-            max: 10000,
-            leftVal: 1000,
-            rightVal: 1500,
-            mobile: true,
+            leftTempVal: props.leftVal,
+            rightTempVal: props.rightVal,
         }
         this.normalizeValues = this.normalizeValues.bind(this)
     }
@@ -32,10 +50,10 @@ export default class PriceFilter extends React.Component<{}, IStateRangeControll
         const data: any = {}
         const withoutLetters = String(value).replace( /\D/g, "")
         data[field] = Number(withoutLetters)
-        this.setState(data)
+        this.props.change(data)
     }
     public normalizeValues = () => {
-        const {leftVal, rightVal, max, min} = this.state
+        const {leftVal, rightVal, max, min} = this.props
         const data: any = {}
         if (leftVal < min) {
             data.leftVal = min
@@ -57,11 +75,11 @@ export default class PriceFilter extends React.Component<{}, IStateRangeControll
             data.rightVal = max
         }
         if (Object.keys(data).length > 0) {
-           this.setState(data)
+            this.props.change(data)
         }
     }
     public render() {
-        const {mobile, leftVal, rightVal, ...otherState} = this.state
+        const {hovered, focused, leftVal, rightVal, change, baseColor, lightColor, ...otherState} = this.props
         const inputs = [
             {
                 value: leftVal,
@@ -78,16 +96,16 @@ export default class PriceFilter extends React.Component<{}, IStateRangeControll
         ]
         return <div className={cnPriceFilter()}>
             <div className={cnPriceFilter("Inputs")}>
-                {inputs.map((input) => (
-                    <div className={cnPriceFilter(`Container${input.containerName}`)}>
+                {inputs.map((input, key) => (
+                    <div className={cnPriceFilter(`Container${input.containerName}`)}  key={key}>
                         <Input type="text"
                                id={input.id}
                                value={input.value}
                                onBlur={this.normalizeValues}
                                className="PriceFilter-Input"
-                               focused={true}
+                               focused={focused}
                                change={this.onChange}
-                               hovered={!mobile}
+                               hovered={hovered}
                                checked={false}
                                field={input.field}/>
                     </div>))}
@@ -97,11 +115,11 @@ export default class PriceFilter extends React.Component<{}, IStateRangeControll
                          className="PriceFilter-Range"
                          leftVal={leftVal}
                          rightVal={rightVal}
-                         baseColor="#d8d8d8"
-                         lightColor="#eb6745"
+                         baseColor={baseColor ? baseColor : "#d8d8d8"}
+                         lightColor={lightColor ? lightColor : "#eb6745"}
                          {...otherState}
-                         hovered={!mobile}
-                         focused={true}/>
+                         hovered={hovered}
+                         focused={focused}/>
         </div>
     }
 }
