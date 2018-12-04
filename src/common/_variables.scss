@@ -2,7 +2,7 @@
 $blue: #6ee065;
 $title: #333;
 $red:#eb6745;
-$bred:#d91624;
+$bred:#ea7b5f;
 $grey:#676767;
 $lightGray: #d8d8d8;
 $white: #fff;
@@ -32,10 +32,10 @@ $inputBorder: $inputBorderWidth $inputBorderType $inputBorderBaseColor;
 /* input animations */
 $inputTransition: all 0.2s ease;
 /* input type range */
-$thumbWidth: 14px;
-$thumbHeight: 14px;
+$thumbWidth: 18px;
+$thumbHeight: 18px;
 $thumbColor: lighten($grey, 60%);
 $thumbBorder: $lightGray;
 $trackLight: $inputBorderFocusColor;
 $trackBase: $lightGray;
-$trackHeight: 2px;
+$trackHeight: $inputBorderWidth;

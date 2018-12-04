@@ -15,9 +15,7 @@
   "dependencies": {
     "@babel/core": "7.1.0",
     "@bem-react/classname": "^1.1.1",
-    "@bem-react/core": "^1.2.0",
-    "@bem-react/di": "^1.0.3",
-    "@types/prop-types": "^15.5.6",
+    "@bem-react/core": "1.2.0",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^1.0.1",
     "file-loader": "2.0.0",
@@ -37,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.3",
+    "@types/prop-types": "^15.5.6",
     "@types/react": "^16.7.4",
     "@types/react-dom": "^16.0.9",
     "prop-types": "^15.6.2",

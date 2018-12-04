@@ -70,8 +70,9 @@
     &::before, &::after {
       position: relative;
       transition: $inputTransition;
+      box-sizing: border-box;
       content: '';
-      top: -$thumbWidth / 2 - $inputBorderWidth/2;
+      top: -$thumbWidth / 2 ;
       border-radius: $thumbHeight;
       display: block;
       min-width: $thumbHeight;
@@ -85,7 +86,7 @@
     }
     &::after {
       left:calc(100%);
-      transform: translateX(-$thumbWidth * 2.5);
+      transform: translateX(-$thumbWidth * 2);
     }
   }
   @-moz-document url-prefix() {

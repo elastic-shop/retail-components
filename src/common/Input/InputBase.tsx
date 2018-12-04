@@ -1,8 +1,6 @@
 import {cn} from "@bem-react/classname"
-import React, {FunctionComponent} from "react"
+import React from "react"
 import "./InputBase.scss"
-import PropTypes from "prop-types"
-import {IClassNameProps} from "@bem-react/core"
 
 export const cnInput = cn("Input")
 
@@ -17,7 +15,6 @@ export interface InputProps {
     focused: boolean,
     value?: number | string,
     change: (key: any, value: any) => void,
-
     [key: string]: any
 }
 
