@@ -15,11 +15,12 @@
       content: "";
       border: $inputBorder;
       display: flex;
+      box-sizing: border-box;
       color: $inputBorderFocusColor;
       align-items: center;
       justify-content: center;
-      height: 14px;
-      width: 14px;
+      height: $thumbHeight;
+      width: $thumbHeight;
       margin-right: 10px;
     }
     display: flex;
