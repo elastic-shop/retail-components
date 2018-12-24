@@ -1,23 +1,23 @@
-import * as React from "react"
-import {Range} from "./index"
+import * as React from "react";
+import {Range} from "./index";
 
 interface IStateRangeController {
-    value: number,
-    min: number,
-    max: number
+    value: number;
+    min: number;
+    max: number;
 }
 
 export default class RangeController extends React.Component<{}, IStateRangeController> {
     constructor(props: any) {
-        super(props)
+        super(props);
         this.state = {
             value: 50,
             min: 10,
             max: 100,
-        }
+        };
     }
     public render() {
-        const { value, min, max } = this.state
+        const { value, min, max } = this.state;
 
         return <Range id="range"
                           value={value}
@@ -27,6 +27,6 @@ export default class RangeController extends React.Component<{}, IStateRangeCont
                           hovered={true}
                           focused={true}
                           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                              this.setState({value: Number(e.target.value)})}/>
+                              this.setState({value: Number(e.target.value)})}/>;
     }
 }

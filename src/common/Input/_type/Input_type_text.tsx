@@ -1,5 +1,5 @@
-import {IClassNameProps, withBemMod} from "@bem-react/core"
-import {cnInput} from "../InputBase"
-import "./Input_type_text.scss"
+import {IClassNameProps, withBemMod} from "@bem-react/core";
+import {cnInput} from "../InputBase";
+import "./Input_type_text.scss";
 
-export const InputTypeText = withBemMod<IClassNameProps>(cnInput(), {type: "text"})
+export const InputTypeText = withBemMod<IClassNameProps>(cnInput(), {type: "text"});

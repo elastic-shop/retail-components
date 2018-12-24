@@ -15,6 +15,7 @@
     position: relative;
     margin-top: 10px;
     height: $thumbHeight;
+    overflow: hidden;
   }
 
   .DoubleRange-Label {
@@ -30,6 +31,7 @@
     -moz-appearance: none;
     width: 100%;
     left: 0;
+    margin: 0;
     display: inline-block;
     position: absolute;
     height: $thumbHeight;
@@ -57,44 +59,64 @@
     }
   }
   .DoubleRange-Gradient {
-    left: 2px;
     top: calc(50% - 1px);
     position: absolute;
     display: flex;
-
     box-sizing: border-box;
     width: 100%;
     height: $trackHeight;
     background-color: $trackBase;
     margin: auto;
-    &::before, &::after {
-      position: relative;
-      transition: $inputTransition;
-      box-sizing: border-box;
-      content: '';
-      top: -$thumbWidth / 2 ;
-      border-radius: $thumbHeight;
-      display: block;
-      min-width: $thumbHeight;
-      flex-basis: $trackHeight;
-      height: $thumbHeight;
-      background-color: $thumbColor;
-      border: $inputBorder;
-      &:hover {
-      cursor: ew-resize;
-    }
-    }
     &::after {
       left:calc(100%);
       transform: translateX(-$thumbWidth * 2);
     }
   }
-  @-moz-document url-prefix() {
-    .DoubleRange-Track, .DoubleRange-Thumb {
-      left: -$thumbHeight/2
+  .DoubleRange-Thumb {
+    width: calc(100% - #{$thumbWidth});
+    position: relative;
+    top: calc(50%);
+    display: flex;
+    align-items: center;
+      &:hover {
+        cursor: ew-resize;
+      }
+      &:before {
+        display: block;
+        position: absolute;
+        content: '';
+        width: 100%;
+        top: calc(50% - 1px);
+        height: 2px;
+        background-color: $trackBase;
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        transition: $inputTransition;
+        box-sizing: border-box;
+        width: $thumbWidth;
+        border-radius: $thumbHeight;
+        min-width: $thumbHeight;
+        flex-basis: $trackHeight;
+        height: $thumbHeight;
+        background-color: $thumbColor;
+        border: $inputBorder;
+      }
+  }
+  .Thumb-Left {
+    &:before {
+      left: -100%;
     }
-    .DoubleRange-Gradient {
-      top: calc(50% - 2px);
+
+    transform: translateX(50%);
+  }
+  .Thumb-Right {
+    &:before {
+      left: $thumbWidth;
     }
+
+    transform: translateX(79%);
   }
 }

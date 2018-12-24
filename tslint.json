@@ -5,7 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
-        "semicolon": [true, "never"],
+        "semicolon": [true, "always"],
         "class-name": false,
         "object-literal-sort-keys": [false, "always"],
         "ordered-imports": [false, "always"],

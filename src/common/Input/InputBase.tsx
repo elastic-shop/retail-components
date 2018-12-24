@@ -1,45 +1,37 @@
-import {cn} from "@bem-react/classname"
-import React from "react"
-import "./InputBase.scss"
+import {cn} from "@bem-react/classname";
+import React, { PureComponent } from "react";
+import "./InputBase.scss";
 
-export const cnInput = cn("Input")
+export const cnInput = cn("Input");
 
 export interface InputProps {
-    type: "text" | "radio" | "checkbox",
-    hovered: boolean,
-    field: string,
-    id: string,
-    text?: string,
-    className?: string,
-    checked?: boolean,
-    focused: boolean,
-    value?: number | string,
-    change: (key: any, value: any) => void,
-    [key: string]: any
+    type: "text" | "radio" | "checkbox";
+    hovered: boolean;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>, value?: any) => void;
+    id: string;
+    text?: string;
+    changeField?: string;
+    name: string;
+    className?: string;
+    checked?: boolean;
+    focused: boolean;
+    value?: number | string;
+    [key: string]: any;
 }
 
-export class InputBase extends React.Component<InputProps, any> {
-    public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { change, field} = this.props
-        const target = e.target
-        const value = target.type === "checkbox" ? target.checked : target.value
-        if (change) {
-            change(field, value)
-        }
-    }
+export class InputBase extends PureComponent<InputProps, any> {
     public render() {
         const {
             type,
             hovered,
             focused,
             value,
-            field,
             id,
             text,
             className,
             checked,
-            change,
-            ...otherProps } = this.props
+            onChange,
+            ...otherProps } = this.props;
         return <div className={cnInput({
             checked,
             hovered,
@@ -47,10 +39,10 @@ export class InputBase extends React.Component<InputProps, any> {
             type,
         }, [className])}>
             <input type={type} id={id} className={cnInput("Inner")}
-
-                   onChange={this.onChange}
+                   checked={checked}
+                   onChange={onChange}
                    value={value} {...otherProps}/>
             <label htmlFor={id} className={cnInput("Label")}>{text}</label>
-        </div>
+        </div>;
     }
 }

@@ -1,6 +1,6 @@
-import "./DoubleRange_hovered.scss"
+import "./DoubleRange_hovered.scss";
 
-import {cnRange} from "../DoubleRangeBase"
-import {IClassNameProps, withBemMod} from "@bem-react/core"
+import {cnRange} from "../DoubleRangeBase";
+import {IClassNameProps, withBemMod} from "@bem-react/core";
 
-export const DoubleRangeHovered = withBemMod<IClassNameProps>(cnRange(), {hovered: true})
+export const DoubleRangeHovered = withBemMod<IClassNameProps>(cnRange(), {hovered: true});

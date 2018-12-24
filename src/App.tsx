@@ -1,51 +1,66 @@
-import * as React from "react"
-import ReactDOM, {render} from "react-dom"
-import "./App.scss"
-import {Input} from "./common/Input"
-import DoubleRangeController from "./examples/DoubleRange/DoubleRangeController"
-import PriceFilter from "./common/PriceFilter/PriceFilter"
+import * as React from "react";
+import ReactDOM, {render} from "react-dom";
+import "./App.scss";
+import {Input} from "./common/Input";
+import DoubleRangeController from "./examples/DoubleRange/DoubleRangeController";
+import PriceFilter from "./common/PriceFilter/PriceFilter";
 
-class App extends React.Component {
+interface IStateApp {
+    min: number;
+    max: number;
+    leftVal: number;
+    rightVal: number;
+    mobile: false;
+    checkbox1: boolean;
+}
+
+class App extends React.Component<any, IStateApp> {
     public constructor(props: any) {
-        super(props)
+        super(props);
         this.state = {
             min: 1000,
             max: 5000,
             leftVal: 2000,
             rightVal: 4000,
             mobile: false,
-            checkbox: false,
-        }
-        this.onChange = this.onChange.bind(this)
-        this.onInputChange = this.onInputChange.bind(this)
+            checkbox1: false,
+        };
+        this.onChange = this.onChange.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
     }
     public onChange = (data: any) => {
-        this.setState(data)
+        this.setState(data);
     }
-    public onInputChange = (field: string, value: any) => {
-            this.setState({[field]: value})
+    public onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.type === "checkbox"
+            ? e.target.checked
+            : e.target.value;
+        const name = e.target.name;
+        console.log(e.target);
+        // @ts-ignore
+        this.setState({[name]: value});
     }
     public render() {
         // @ts-ignore
-        const { min, max, leftVal, rightVal, mobile, checkbox } = this.state
+        const { min, max, leftVal, rightVal, mobile, checkbox } = this.state;
         return <div className="App">
             <div style={{border: "2px solid #eb6745", padding: 20}}>
                 <h1>Library</h1>
-                <Input field="123"
+                <Input name="Field1"
                        id="text"
                        type="text"
-                       change={this.onInputChange}
+                       onChange={this.onInputChange}
                        text="Цена пива"
                        focused={true}
                        hovered={true}
                        key={1}/>
                 <h2>Checkbox</h2>
-                <Input field="checkbox"
-                       id="name" type="checkbox"
-                    // @ts-ignore
-                       checked={this.state.checkbox}
+                <Input id="name"
+                       type="checkbox"
+                       name="checkbox1"
+                       checked={this.state.checkbox1}
+                       onChange={this.onInputChange}
                        text="Пить пиво"
-                       change={this.onInputChange}
                        focused={true}
                        hovered={true}
                        key={2}/>
@@ -53,7 +68,8 @@ class App extends React.Component {
                 <Input field="123"
                        id="radio"
                        type="radio"
-                       change={this.onInputChange}
+                       name="radio1"
+                       onChange={this.onInputChange}
                        text="Пить пиво"
                        focused={true}
                        hovered={true}
@@ -70,14 +86,14 @@ class App extends React.Component {
                              max={max}
                              leftVal={leftVal}
                              rightVal={rightVal}
-                             change={this.onChange} />
+                             onChange={this.onChange} />
             </div>
-        </div>
+        </div>;
     }
 }
 
-const root = document.getElementById("root")
+const root = document.getElementById("root");
 
 if (root) {
-    ReactDOM.render(<App/>,  root)
+    ReactDOM.render(<App/>,  root);
 }
