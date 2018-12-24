@@ -99,7 +99,7 @@ export default class PriceFilter extends React.Component<IPropsRangeController, 
         return <div className={cnPriceFilter()}>
             <div className={cnPriceFilter("Inputs")}>
                 {inputs.map((input, key) => (
-                    <div className={cnPriceFilter(`Container${<input type="text" className="postfix"/>}`)}  key={key}>
+                    <div className={cnPriceFilter(`Container${input.postfix}`)}  key={key}>
                         <Input type="text"
                                id={input.id}
                                name={input.name}
