@@ -3,7 +3,7 @@ import ReactDOM, {render} from "react-dom";
 import "./App.scss";
 import {Input} from "./common/Input";
 import DoubleRangeController from "./examples/DoubleRange/DoubleRangeController";
-import Range_Input from "./common/Range_Input/Range_Input";
+import RangeInput from "./common/RangeInput/RangeInput";
 
 interface IStateApp {
     min: number;
@@ -79,14 +79,14 @@ class App extends React.Component<any, IStateApp> {
             <div style={{border: "2px solid #eb6745", padding: 20, marginTop: 20}}>
                 <h1>Examples</h1>
                 <h3>Price Filter</h3>
-                <Range_Input hovered={true}
-                             focused={true}
-                             min={min}
-                             tickSize={10}
-                             max={max}
-                             leftVal={leftVal}
-                             rightVal={rightVal}
-                             onChange={this.onChange} />
+                <RangeInput hovered={true}
+                            focused={true}
+                            min={min}
+                            tickSize={10}
+                            max={max}
+                            leftVal={leftVal}
+                            rightVal={rightVal}
+                            onChange={this.onChange} />
             </div>
         </div>;
     }

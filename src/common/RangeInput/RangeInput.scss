@@ -1,16 +1,16 @@
-.Range_Input-Inputs {
+.RangeInput-Inputs {
   display: flex;
   width: 100%;
 }
 
-.Range_Input-ContainerLeft {
+.RangeInput-ContainerLeft {
   width: 50%;
   .Input-Inner {
     margin-right: 20px;
   }
 }
 
-.Range_Input-ContainerRight {
+.RangeInput-ContainerRight {
   width: 50%;
   .Input-Label {
     text-align: right;

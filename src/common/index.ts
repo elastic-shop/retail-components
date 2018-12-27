@@ -1,11 +1,11 @@
 import {Input} from "./Input";
 import {Range} from "./Range";
-import Range_Input from "./Range_Input/Range_Input";
+import RangeInput from "./RangeInput/RangeInput";
 
 const components = {
     Input,
     Range,
-    Range_Input,
+    RangeInput,
 };
 
 export default components;

@@ -1,8 +1,8 @@
 @import "../../variables";
 
-.DoubleRange_hovered {
-  .DoubleRange-Container:hover {
-    .DoubleRange-Thumb::after {
+.Range_hovered {
+  .Range-Container:hover {
+    .Range-Thumb::after {
       border-color: $inputBorderHoverColor;
     }
   }

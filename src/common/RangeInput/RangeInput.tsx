@@ -2,10 +2,10 @@ import * as React from "react";
 import {cn} from "@bem-react/classname";
 import {Range} from "../Range";
 import {Input} from "../Input";
-import "./Range_Input.scss";
+import "./RangeInput.scss";
 import {IPropsDoubleRangeController} from "../Range/RangeBase";
 
-const cnPriceFilter = cn("Range_Input");
+const cnPriceFilter = cn("RangeInput");
 
 export interface IPropsRangeController {
     min: number;
@@ -25,7 +25,7 @@ export interface IStateRangeController {
     rightVal: number;
 }
 
-export default class Range_Input extends React.Component<IPropsRangeController, IStateRangeController> {
+export default class RangeInput extends React.Component<IPropsRangeController, IStateRangeController> {
     constructor(props: IPropsRangeController) {
         super(props);
         this.state = {
@@ -80,7 +80,7 @@ export default class Range_Input extends React.Component<IPropsRangeController, 
                                name={input.name}
                                onBlur={this.applyRange}
                                value={input.value}
-                               className="Range_Input-Input"
+                               className="RangeInput-Input"
                                focused={focused}
                                onChange={this.onInputChange}
                                hovered={hovered}
@@ -90,7 +90,7 @@ export default class Range_Input extends React.Component<IPropsRangeController, 
             </div>
             <Range id="price-double-range"
                    onChange={this.onDoubleChange}
-                   className="Range_Input-Range"
+                   className="RangeInput-Range"
                    min={min}
                    max={max}
                    tickSize={tickSize}
