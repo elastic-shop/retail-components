@@ -1,0 +1,22 @@
+@import "../variables";
+.Thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  height: $thumbHeight;
+  width: $thumbHeight;
+  content: "";
+  border: $inputBorder;
+  color: $inputBorderFocusColor;
+  background-color: $thumbBackground;
+}
+
+.Thumb_baseTransition {
+  transition: $inputTransition;
+}
+
+.Thumb_rounded {
+  border-radius: $thumbWidth/2;
+}
