@@ -42,7 +42,6 @@ class App extends React.Component<any, IStateApp> {
     public render() {
         // @ts-ignore
         const { min, max, leftVal, rightVal, mobile, checkbox } = this.state;
-        console.log(leftVal, rightVal);
         return <div className="App">
             <div style={{border: "2px solid #eb6745", padding: 20}}>
                 <h1>Library</h1>

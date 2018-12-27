@@ -95,8 +95,8 @@ export default class Range_Input extends React.Component<IPropsRangeController, 
                          max={max}
                          tickSize={tickSize}
                          leftVal={leftVal}
-                         callback={this.applyRange}
                          rightVal={rightVal}
+                         callback={this.applyRange}
                          baseColor={baseColor ? baseColor : "#d8d8d8"}
                          lightColor={lightColor ? lightColor : "#eb6745"}
                          hovered={hovered}
@@ -136,7 +136,8 @@ export default class Range_Input extends React.Component<IPropsRangeController, 
             if (leftVal > rightVal) {
                 rightVal = leftVal;
             }
-        } else if (leftVal > rightVal) {
+        }
+        if (leftVal > rightVal) {
             rightVal = leftVal;
         }
         if (rightVal > max) {

@@ -166,7 +166,7 @@ export class RangeBase extends React.Component<IPropsRange, IStateRange> {
         return value;
     }
     private defineClosestPoint(value: number): "leftVal" | "rightVal" {
-        const { leftVal, rightVal, min } = this.props;
+        const { leftVal, rightVal, min, max } = this.props;
         const dLeft = Math.abs(leftVal - value);
         const dRight = Math.abs(rightVal - value);
         let target: InputValues | null = null;
@@ -176,8 +176,7 @@ export class RangeBase extends React.Component<IPropsRange, IStateRange> {
             target = "leftVal";
             /* left and right equal */
         } else {
-          const dMaxLeft = Math.abs(min - leftVal);
-          if (dMaxLeft < value) {
+          if (value > rightVal) {
               target = "rightVal";
           } else {
               target = "leftVal";
