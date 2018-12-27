@@ -1,11 +1,11 @@
 import {Input} from "./Input";
-import {DoubleRange} from "./DoubleRange";
-import PriceFilter from "./PriceFilter/PriceFilter";
+import {DoubleRange} from "./Range";
+import Range_Input from "./Range_Input/Range_Input";
 
 const components = {
     Input,
     DoubleRange,
-    PriceFilter,
+    PriceFilter: Range_Input,
 };
 
 export default components;

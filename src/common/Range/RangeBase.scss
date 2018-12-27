@@ -1,0 +1,97 @@
+@import "../variables";
+@import "../mixins";
+@import "../Thumb/Thumb";
+
+.Range-Container {
+  position: relative;
+  margin-top: 10px;
+  height: $thumbHeight;
+  overflow: hidden;
+}
+
+.Range-Label {
+  color: #555;
+  user-select: none;
+  order: 0;
+  padding-bottom: 5px;
+  @include no-select;
+}
+
+.Range-Track {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  left: 0;
+  margin: 0;
+  display: inline-block;
+  position: absolute;
+  height: $thumbHeight;
+  background: transparent;
+  order: 1;
+  cursor: pointer;
+  outline: none;
+  @include input-range-track-common(moz ch) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 2px;
+    background: transparent;
+  }
+  @include input-range-track-common(ie) {
+    height: 0;
+    background-color: transparent;
+  }
+  @include input-range-thumb-common() {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    background: transparent;
+  }
+}
+
+.Range-Gradient {
+  top: calc(50% - 1px);
+  position: absolute;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: $trackHeight;
+  background-color: $trackBase;
+}
+
+.Range-Thumb {
+  width: calc(100% - #{$thumbWidth});
+  position: relative;
+  top: calc(50%);
+  display: flex;
+  align-items: center;
+  &:hover {
+    cursor: ew-resize;
+  }
+  &:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 100%;
+    top: calc(50% - 1px);
+    height: 2px;
+    background-color: $trackBase;
+  }
+  &:after {
+    @extend .Thumb, .Thumb_rounded, .Thumb_baseTransition;
+    position: absolute;
+  }
+}
+
+.Range-Thumb_left {
+  &:before {
+    left: -100%;
+  }
+}
+
+.Range-Thumb_right {
+  &:before {
+    left: $thumbWidth;
+  }
+}

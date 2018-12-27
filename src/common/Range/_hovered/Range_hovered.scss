@@ -2,7 +2,7 @@
 
 .DoubleRange_hovered {
   .DoubleRange-Container:hover {
-    .DoubleRange-Gradient::after, .DoubleRange-Gradient:before {
+    .DoubleRange-Thumb::after {
       border-color: $inputBorderHoverColor;
     }
   }

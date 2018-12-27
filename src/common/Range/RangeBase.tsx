@@ -1,6 +1,6 @@
 import {cn} from "@bem-react/classname";
 import * as React from "react";
-import "./DoubleRangeBase.scss";
+import "./RangeBase.scss";
 
 const colors = {
     base: "#d8d8d8",
@@ -15,9 +15,11 @@ interface IPropsRange extends IPropsDoubleRangeController {
     className?: string;
     hovered: boolean;
     focused: boolean;
+    callback?: any;
     baseColor: string;
     lightColor: string;
     text?: string;
+    tickSize?: number;
     [key: string]: any;
 }
 
@@ -31,37 +33,40 @@ export interface IPropsDoubleRangeController {
 export interface IStateRange {
     thumbFocused: boolean;
     touchNow: boolean;
-    temp: any;
 }
 
-export const cnRange = cn("DoubleRange");
+export const cnRange = cn("Range");
 
-export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
+export class RangeBase extends React.Component<IPropsRange, IStateRange> {
     private input?: HTMLInputElement | null;
     constructor(props: IPropsRange) {
         super(props);
         this.state = {
             thumbFocused: false,
             touchNow: false,
-            temp: {},
         };
     }
     public render() {
         const { id,
+                tickSize,
                 className,
-                leftVal,
-                rightVal,
                 text,
                 min,
+                leftVal,
+                rightVal,
                 max,
+                callback,
                 lightColor,
                 baseColor,
                 onChange,
                 hovered,
                 focused,
                 ...otherProps } = this.props;
-        let firstStopVal = Math.max(Math.round((leftVal - min) / (max - min) * 100), 0);
-        let secondStopVal = Math.min(Math.round((rightVal - min) / (max - min) * 100), 100);
+        const { thumbFocused } = this.state;
+        let firstStopVal = Math.max(
+            Math.round((leftVal - min) / (max - min) * 100), 0);
+        let secondStopVal = Math.min(
+            Math.round((rightVal - min) / (max - min) * 100), 100);
         if (secondStopVal < 0) {
             secondStopVal = 0;
         }
@@ -72,14 +77,19 @@ export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
             secondStopVal = 100;
         }
 
-        return <div className={cnRange({hovered, focused: focused && this.state.thumbFocused}, [className])}>
+        return <div className={cnRange({hovered, focused: focused && thumbFocused}, [className])}>
             <label htmlFor={id} className={cnRange("Label")}>{text}</label>
             <div className={cnRange("Container")}>
                 <div className={cnRange("Gradient")}
                      style={{backgroundColor: `${lightColor}`}}/>
-                <div className="DoubleRange-Thumb Thumb-Left" style={{transform: `translateX(${firstStopVal}%)`}}/>
-                <div className="DoubleRange-Thumb Thumb-Right" style={{transform: `translateX(${secondStopVal}%)`}}/>
-
+                <div
+                    className="Range-Thumb Range-Thumb_left"
+                    style={{transform: `translateX(${firstStopVal}%)`}}
+                />
+                <div
+                    className="Range-Thumb Range-Thumb_right"
+                    style={{transform: `translateX(${secondStopVal}%)`}}
+                />
                 <input type="range"
                        ref={(node) => this.input = node}
                        id={`${id}-track`}
@@ -105,8 +115,12 @@ export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
     }
     private onTouchEnd = (e: React.TouchEvent<HTMLInputElement>) => {
         const { touchNow } = this.state;
+        const { callback } = this.props;
         if (touchNow) {
             this.setState({touchNow: false, thumbFocused: false});
+        }
+        if (callback) {
+            this.props.callback();
         }
     }
     private onMouseDown = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -114,6 +128,10 @@ export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
     }
     private onMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
         this.setState({thumbFocused: false});
+        const { callback } = this.props;
+        if (callback) {
+            this.props.callback();
+        }
     }
     private onTouch = (e: React.TouchEvent<HTMLInputElement>) => {
         if (this.input) {
@@ -126,7 +144,7 @@ export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
             } else if (value >= 1) {
                 value = 1;
             }
-            const pointValue = Math.round(min + value * (max - min));
+            const pointValue = this.roundValue(min + value * (max - min));
             const point = this.defineClosestPoint(pointValue);
             onChange(point, String(pointValue));
         }
@@ -135,13 +153,19 @@ export class DoubleRangeBase extends React.Component<IPropsRange, IStateRange> {
         const { touchNow } = this.state;
         const { onChange } = this.props;
         if (!touchNow) {
-            const value = Number(e.target.value);
+            const value = this.roundValue(Number(e.target.value));
             const point = this.defineClosestPoint(value);
             onChange(point, String(value));
         }
     }
+    private roundValue(value: number) {
+        const { min, max, tickSize = 1 } = this.props;
+        if (value !== min && value !== max) {
+            value = Math.round(value / tickSize) * tickSize;
+        }
+        return value;
+    }
     private defineClosestPoint(value: number): "leftVal" | "rightVal" {
-        /* todo  некорректно определяет левую и правую точку, трудновоспоизводимый баг, редко встречается*/
         const { leftVal, rightVal, min } = this.props;
         const dLeft = Math.abs(leftVal - value);
         const dRight = Math.abs(rightVal - value);

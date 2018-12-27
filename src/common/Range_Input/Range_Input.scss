@@ -1,16 +1,16 @@
-.PriceFilter-Inputs {
+.Range_Input-Inputs {
   display: flex;
   width: 100%;
 }
 
-.PriceFilter-ContainerLeft {
+.Range_Input-ContainerLeft {
   width: 50%;
   .Input-Inner {
     margin-right: 20px;
   }
 }
 
-.PriceFilter-ContainerRight {
+.Range_Input-ContainerRight {
   width: 50%;
   .Input-Label {
     text-align: right;

@@ -1,9 +1,9 @@
 import * as React from "react";
-import {DoubleRangeBase, IPropsDoubleRangeController} from "../../common/DoubleRange/DoubleRangeBase";
-import {DoubleRangeHovered} from "../../common/DoubleRange/_hovered/DoubleRange_hovered";
+import {RangeBase, IPropsDoubleRangeController} from "../../common/Range/RangeBase";
+import {RangeHovered} from "../../common/Range/_hovered/Range_hovered";
 import {compose} from "@bem-react/core";
 
-const BemDoubleRange = compose(DoubleRangeHovered)(DoubleRangeBase);
+const BemDoubleRange = compose(RangeHovered)(RangeBase);
 
 export default class DoubleRangeController extends React.Component<{}, IPropsDoubleRangeController > {
     constructor(props: any) {

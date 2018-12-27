@@ -3,7 +3,7 @@ import ReactDOM, {render} from "react-dom";
 import "./App.scss";
 import {Input} from "./common/Input";
 import DoubleRangeController from "./examples/DoubleRange/DoubleRangeController";
-import PriceFilter from "./common/PriceFilter/PriceFilter";
+import Range_Input from "./common/Range_Input/Range_Input";
 
 interface IStateApp {
     min: number;
@@ -18,10 +18,10 @@ class App extends React.Component<any, IStateApp> {
     public constructor(props: any) {
         super(props);
         this.state = {
-            min: 1000,
-            max: 5000,
-            leftVal: 2000,
-            rightVal: 4000,
+            min: 898,
+            max: 1000,
+            leftVal: 800,
+            rightVal: 1000,
             mobile: false,
             checkbox1: false,
         };
@@ -36,13 +36,13 @@ class App extends React.Component<any, IStateApp> {
             ? e.target.checked
             : e.target.value;
         const name = e.target.name;
-        console.log(e.target);
         // @ts-ignore
         this.setState({[name]: value});
     }
     public render() {
         // @ts-ignore
         const { min, max, leftVal, rightVal, mobile, checkbox } = this.state;
+        console.log(leftVal, rightVal);
         return <div className="App">
             <div style={{border: "2px solid #eb6745", padding: 20}}>
                 <h1>Library</h1>
@@ -80,9 +80,10 @@ class App extends React.Component<any, IStateApp> {
             <div style={{border: "2px solid #eb6745", padding: 20, marginTop: 20}}>
                 <h1>Examples</h1>
                 <h3>Price Filter</h3>
-                <PriceFilter hovered={true}
+                <Range_Input hovered={true}
                              focused={true}
                              min={min}
+                             tickSize={10}
                              max={max}
                              leftVal={leftVal}
                              rightVal={rightVal}

@@ -1,0 +1,7 @@
+@import "../../variables";
+
+.DoubleRange_focused {
+  .DoubleRange-Thumb::after {
+    border-color: $inputBorderFocusColor !important;
+  }
+}

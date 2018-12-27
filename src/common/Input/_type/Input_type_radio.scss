@@ -1,4 +1,6 @@
 @import "../../variables";
+@import "../InputBase.scss";
+@import "../../Thumb/Thumb";
 
 .Input_type_radio {
   flex-direction: row;
@@ -11,17 +13,8 @@
 
   .Input-Label {
     &:before {
-      content: "";
-      transition: $inputTransition;
-      border: $inputBorder;
-      color: $inputBorderFocusColor;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 14px;
-      border-radius: 9px;
-      width: 14px;
-      margin-right: 10px;
+      @extend .Thumb, .Thumb_rounded, .Thumb_baseTransition;
+      margin-right: $thumbMarginRightBase;
       font-size: 38px;
     }
     display: flex;

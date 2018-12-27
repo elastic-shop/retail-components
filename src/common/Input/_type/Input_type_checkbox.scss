@@ -1,4 +1,6 @@
 @import "../../variables";
+@import "../InputBase.scss";
+@import "../../Thumb/Thumb";
 
 .Input_type_checkbox {
   flex-direction: row;
@@ -11,17 +13,8 @@
 
   .Input-Label {
     &:before {
-      transition: $inputTransition;
-      content: "";
-      border: $inputBorder;
-      display: flex;
-      box-sizing: border-box;
-      color: $inputBorderFocusColor;
-      align-items: center;
-      justify-content: center;
-      height: $thumbHeight;
-      width: $thumbHeight;
-      margin-right: 10px;
+      @extend .Thumb, .Thumb_baseTransition;
+      margin-right: $thumbMarginRightBase;
     }
     display: flex;
     align-items: center;

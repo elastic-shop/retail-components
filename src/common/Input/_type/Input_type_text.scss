@@ -1,4 +1,5 @@
 @import "../../variables";
+@import "../InputBase.scss";
 
 .Input_type_text {
   .Input-Label {
@@ -7,11 +8,11 @@
     padding-bottom: 5px;
   }
   .Input-Inner {
+    @extend .Input-rounded;
     padding: 6px 12px;
     color: inherit;
     order: 1;
     border: $inputBorder;
-    border-radius: 4px;
     outline: none;
   }
 }

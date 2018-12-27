@@ -24,6 +24,7 @@ $baseFont: "Calibri, sans-serif";
 $inputBorderHoverColor: $hoverColor;
 $inputBorderFocusColor: $red;
 $inputBorderWidth: 2px;
+$inputBorderRadius: 4px;
 $inputBorderType: solid;
 $inputBorderBaseColor: $lightGray;
 $inputBorder: $inputBorderWidth $inputBorderType $inputBorderBaseColor;
@@ -34,8 +35,10 @@ $inputTransition: all 0.2s ease;
 /* input type range */
 $thumbWidth: 18px;
 $thumbHeight: 18px;
+$thumbMarginRightBase: 10px;
 $thumbColor: lighten($grey, 60%);
 $thumbBorder: $lightGray;
+$thumbBackground: white;
 $trackLight: $inputBorderFocusColor;
 $trackBase: $lightGray;
 $trackHeight: $inputBorderWidth;
