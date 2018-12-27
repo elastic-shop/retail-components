@@ -3,4 +3,4 @@ import "./_focused/Range_focused.scss";
 import {RangeBase} from "./RangeBase";
 import {compose} from "@bem-react/core";
 
-export const DoubleRange = compose(RangeHovered)(RangeBase);
+export const Range = compose(RangeHovered)(RangeBase);

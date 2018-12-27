@@ -1,6 +1,6 @@
 import * as React from "react";
 import {cn} from "@bem-react/classname";
-import {DoubleRange} from "../Range";
+import {Range} from "../Range";
 import {Input} from "../Input";
 import "./Range_Input.scss";
 import {IPropsDoubleRangeController} from "../Range/RangeBase";
@@ -88,19 +88,19 @@ export default class Range_Input extends React.Component<IPropsRangeController, 
                             />
                     </div>))}
             </div>
-            <DoubleRange id="price-double-range"
-                         onChange={this.onDoubleChange}
-                         className="Range_Input-Range"
-                         min={min}
-                         max={max}
-                         tickSize={tickSize}
-                         leftVal={leftVal}
-                         rightVal={rightVal}
-                         callback={this.applyRange}
-                         baseColor={baseColor ? baseColor : "#d8d8d8"}
-                         lightColor={lightColor ? lightColor : "#eb6745"}
-                         hovered={hovered}
-                         focused={focused}/>
+            <Range id="price-double-range"
+                   onChange={this.onDoubleChange}
+                   className="Range_Input-Range"
+                   min={min}
+                   max={max}
+                   tickSize={tickSize}
+                   leftVal={leftVal}
+                   rightVal={rightVal}
+                   callback={this.applyRange}
+                   baseColor={baseColor ? baseColor : "#d8d8d8"}
+                   lightColor={lightColor ? lightColor : "#eb6745"}
+                   hovered={hovered}
+                   focused={focused}/>
         </div>;
     }
     private onChange = (data: IPropsDoubleRangeController) => {
