@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@bem-react/classname": "^1.2.0",
-    "@bem-react/core": "1.4.0",
+    "@bem-react/classname": "^1.4.1",
+    "@bem-react/core": "^1.6.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   }
