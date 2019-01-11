@@ -1,6 +1,6 @@
 import "./Range_hovered.scss";
 
-import {cnRange} from "../RangeBase";
-import {IClassNameProps, withBemMod} from "@bem-react/core";
+import { cnRange, IPresenterRange } from "../RangeBase";
+import { withBemMod } from "@bem-react/core";
 
-export const RangeHovered = withBemMod<IClassNameProps>(cnRange(), {hovered: true});
+export const RangeHovered = withBemMod<IPresenterRange>(cnRange(), {hovered: true});

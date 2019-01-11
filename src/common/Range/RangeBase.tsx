@@ -1,6 +1,7 @@
 import {cn} from "@bem-react/classname";
 import * as React from "react";
 import "./RangeBase.scss";
+import { IClassNameProps } from "@bem-react/core";
 
 const colors = {
     base: "#d8d8d8",
@@ -9,12 +10,15 @@ const colors = {
 
 type InputValues = "leftVal" | "rightVal";
 
-interface IPropsRange extends IPropsDoubleRangeController {
+export interface IPresenterRange extends IClassNameProps {
+    hovered?: boolean;
+    focused?: boolean;
+}
+
+interface IPropsRange extends IPropsDoubleRangeController, IPresenterRange {
     onChange: (key: Partial<keyof IPropsDoubleRangeController>, value: string ) => void;
     id: string;
     className?: string;
-    hovered: boolean;
-    focused: boolean;
     callback?: any;
     baseColor: string;
     lightColor: string;
@@ -77,7 +81,7 @@ export class RangeBase extends React.Component<IPropsRange, IStateRange> {
             secondStopVal = 100;
         }
 
-        return <div className={cnRange({hovered, focused: focused && thumbFocused}, [className])}>
+        return <div className={cnRange({focused: focused && thumbFocused}, [className])}>
             <label htmlFor={id} className={cnRange("Label")}>{text}</label>
             <div className={cnRange("Container")}>
                 <div className={cnRange("Gradient")}
