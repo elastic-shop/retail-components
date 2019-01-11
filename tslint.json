@@ -9,7 +9,8 @@
         "class-name": false,
         "object-literal-sort-keys": [false, "always"],
         "ordered-imports": [false, "always"],
-        "prefer-for-of": false
+        "prefer-for-of": false,
+        "trailing-comma": false
     },
     "rulesDirectory": []
 }
