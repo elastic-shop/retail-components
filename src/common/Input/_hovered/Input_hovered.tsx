@@ -1,5 +1,5 @@
-import {IClassNameProps, withBemMod} from "@bem-react/core";
-import {cnInput} from "../InputBase";
+import { withBemMod } from "@bem-react/core";
+import { cnInput, IPresenterInputProps } from "../InputBase";
 import "./Input_hovered.scss";
 
-export const InputHovered = withBemMod<IClassNameProps>(cnInput(), {hovered: true});
+export const InputHovered = withBemMod<IPresenterInputProps>(cnInput(), {hovered: true});

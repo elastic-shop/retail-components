@@ -1,5 +1,5 @@
-import {IClassNameProps, withBemMod} from "@bem-react/core";
-import {cnInput} from "../InputBase";
+import { withBemMod } from "@bem-react/core";
+import { cnInput, IPresenterInputProps } from "../InputBase";
 import "./Input_focused.scss";
 
-export const InputFocused = withBemMod<IClassNameProps>(cnInput(), {focused: true});
+export const InputFocused = withBemMod<IPresenterInputProps>(cnInput(), {focused: true});

@@ -1,5 +1,5 @@
-import {IClassNameProps, withBemMod} from "@bem-react/core";
-import {cnInput} from "../InputBase";
+import { withBemMod } from "@bem-react/core";
+import { cnInput, IPresenterInputProps } from "../InputBase";
 import "./Input_type_checkbox.scss";
 
-export const InputTypeCheckBox = withBemMod<IClassNameProps>(cnInput(), {type: "checkbox"});
+export const InputTypeCheckBox = withBemMod<IPresenterInputProps>(cnInput(), {type: "checkbox"});
