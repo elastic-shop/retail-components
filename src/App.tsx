@@ -90,6 +90,8 @@ class App extends React.Component<any, IStateApp> {
                 <RangeInput hovered={true}
                             focused={true}
                             min={min}
+                            inputTimeout={3000}
+                            lightColor="#d91624"
                             tickSize={10}
                             max={max}
                             leftVal={leftVal}

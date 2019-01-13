@@ -22,6 +22,7 @@ export interface IPropsRangeController extends IPresenterRangeInput {
     tickSize?: number;
     baseColor?: string;
     lightColor?: string;
+    inputTimeout?: number;
 }
 
 export interface IStateRangeController {
@@ -30,13 +31,13 @@ export interface IStateRangeController {
 }
 
 export default class RangeInput extends React.Component<IPropsRangeController, IStateRangeController> {
+    private timer?: number;
     constructor(props: IPropsRangeController) {
         super(props);
         this.state = {
             leftVal: props.leftVal,
             rightVal: props.rightVal
         };
-        this.applyRange = this.applyRange.bind(this);
     }
 
     public componentDidUpdate(prevProps: IPropsRangeController) {
@@ -97,7 +98,7 @@ export default class RangeInput extends React.Component<IPropsRangeController, I
                     </div>))}
             </div>
             <Range id="price-double-range"
-                   onChange={this.onDoubleChange}
+                   onChange={this.onRangeChange}
                    className="RangeInput-Range"
                    min={min}
                    max={max}
@@ -116,22 +117,31 @@ export default class RangeInput extends React.Component<IPropsRangeController, I
         this.setState(data);
     }
     private onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { inputTimeout } = this.props;
         const data: any = {};
         const value = e.currentTarget.value;
         const field = e.currentTarget.name;
         const withoutLetters = String(value).replace(/\D/g, "");
         data[field] = Number(withoutLetters);
         this.onChange(data);
+        if (inputTimeout) {
+            clearTimeout(this.timer);
+            this.timer = window.setTimeout(this.applyRange, inputTimeout);
+        }
     }
-    private onDoubleChange = (field: Partial<keyof IPropsDoubleRangeController>, value: string) => {
+    private onRangeChange = (field: Partial<keyof IPropsDoubleRangeController>, value: string) => {
         const data: any = {};
-        const withoutLetters = String(value).replace(/\D/g, "");
-        data[field] = Number(withoutLetters);
+        data[field] = Number(value);
         this.onChange(data);
     }
 
-    private applyRange() {
-        this.props.onChange(this.normalizeValues());
+    private applyRange = () => {
+        if (this.timer) {
+            clearTimeout(this.timer);
+        }
+        const normalized = this.normalizeValues();
+        this.props.onChange(normalized);
+        this.setState(normalized);
     }
 
     private readonly normalizeValues = () => {
