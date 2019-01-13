@@ -1,8 +1,9 @@
 {
   "name": "@pomkaize/common",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "description": "common UI react Library",
   "main": "index.js",
+  "typings": "index.d.ts",
   "license": "MIT",
   "dependencies": {
     "@bem-react/classname": "^1.4.1",
