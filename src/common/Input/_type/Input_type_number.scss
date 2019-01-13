@@ -1,0 +1,13 @@
+@import "../../variables";
+@import "./Input_type_text";
+
+.Input_type_number {
+  @extend .Input_type_text;
+  .Input-Inner {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

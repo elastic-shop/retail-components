@@ -9,16 +9,15 @@ export interface IPresenterInputProps extends IClassNameProps {
     checked?: boolean;
     hovered?: boolean;
     focused?: boolean;
-    type?: "text" | "radio" | "checkbox";
+    type?: "text" | "number" | "radio" | "checkbox";
 }
 
 export interface InputProps extends IPresenterInputProps {
-    type: "text" | "radio" | "checkbox";
+    type: "text" | "number" | "radio" | "checkbox";
     hovered: boolean;
     onChange: (e: React.ChangeEvent<HTMLInputElement>, value?: any) => void;
     id: string;
     text?: string;
-    changeField?: string;
     name?: string;
     className?: string;
     checked?: boolean;
