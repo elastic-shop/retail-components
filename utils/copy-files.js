@@ -5,7 +5,7 @@ const fsExtra = require('fs-extra')
 const excludes = ['App.scss', 'examples', '__deprecated']
 
 const fileHandler = (file) => {
-  if (path.extname(file) === '.scss') {
+  if (path.extname(file) === '.scss' || path.basename(file).indexOf('d.ts') !== -1) {
     try {
       excludes.map((exclude) => {
         if (file.indexOf(exclude) !== -1) {
@@ -70,4 +70,4 @@ walk('./src', function (err, results) {
   if (err) {
     console.log(err)
   }
-}, fileHandler)
+}, fileHandler);

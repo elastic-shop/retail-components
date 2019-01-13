@@ -1,19 +1,19 @@
 import * as React from "react";
 import { cn } from "@bem-react/classname";
-import { Range } from "../Range";
-import { Input } from "../Input";
+import Range from "../Range";
+import Input from "../Input";
 import "./RangeInput.scss";
 import { IPropsDoubleRangeController } from "../Range/RangeBase";
 import { IClassNameProps } from "@bem-react/core";
 
 const cnPriceFilter = cn("RangeInput");
 
-export interface IPresenterRangeInput extends IClassNameProps {
+interface IPresenterRangeInput extends IClassNameProps {
     hovered?: boolean;
     focused?: boolean;
 }
 
-export interface IPropsRangeController extends IPresenterRangeInput {
+interface IPropsRangeController extends IPresenterRangeInput {
     min: number;
     max: number;
     leftVal: number;
@@ -25,7 +25,7 @@ export interface IPropsRangeController extends IPresenterRangeInput {
     inputTimeout?: number;
 }
 
-export interface IStateRangeController {
+interface IStateRangeController {
     leftVal: number;
     rightVal: number;
 }

@@ -1,9 +1,9 @@
 import * as React from "react";
 import ReactDOM, { render } from "react-dom";
 import "./App.scss";
-import { Input } from "./common/Input";
+import Input from "./common/Input";
 import DoubleRangeController from "./examples/DoubleRange/DoubleRangeController";
-import RangeInput from "./common/RangeInput/RangeInput";
+import RangeInput from "./common/RangeInput";
 import Button from "./common/Button";
 
 interface IStateApp {

@@ -7,7 +7,7 @@ import { InputTypeRadio } from "./_type/Input_type_radio";
 import { InputFocused } from "./_focused/Input_focused";
 import { InputTypeNumber } from "./_type/Input_type_number";
 
-export const Input = compose(
+const Input = compose(
     InputTypeText,
     InputTypeNumber,
     InputTypeCheckBox,
@@ -15,3 +15,5 @@ export const Input = compose(
     InputHovered,
     InputFocused)
 (InputBase);
+
+export default Input;

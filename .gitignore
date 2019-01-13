@@ -2,5 +2,4 @@
 node_modules
 dist/*
 !dist/package.json
-!dist/index.d.ts
 debug.log

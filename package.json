@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --host 0.0.0.0",
-    "build": "tsc && node ./utils/scssImporter.js"
+    "build": "tsc && node ./utils/copy-files.js"
   },
   "dependencies": {
     "@babel/core": "7.1.0",
