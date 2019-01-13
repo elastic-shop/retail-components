@@ -1,0 +1,22 @@
+@import "../variables";
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  line-height: 1;
+  width: 100%;
+  text-decoration: none;
+  background: $red;
+  color: #ffffff;
+  border-radius: $inputBorderRadius;
+  border: 2px solid $red;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  &:active {
+    transform: scale(0.98);
+  }
+}

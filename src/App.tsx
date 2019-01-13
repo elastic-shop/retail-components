@@ -79,7 +79,10 @@ class App extends React.Component<any, IStateApp> {
                 <h2>Range</h2>
                 <DoubleRangeController key={5}/>
                 <h2>Button</h2>
-                <Button text="Кнопка тест"/>
+                <Button text="Кнопка тест"
+                        size="s"
+                        hovered={true}
+                        />
             </div>
             <div style={{border: "2px solid #eb6745", padding: 20, marginTop: 20}}>
                 <h1>Examples</h1>

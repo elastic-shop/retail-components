@@ -9,6 +9,9 @@
 }
 
 .Input-Inner {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   font-family: inherit;
   transition: $inputTransition;
   font-size: inherit;

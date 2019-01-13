@@ -1,0 +1,5 @@
+@import "../../variables";
+.Button_hovered:hover {
+  background-color: $lightRed;
+  border: 2px solid $lightRed;
+}

@@ -15,6 +15,8 @@
     &:before {
       @extend .Thumb, .Thumb_rounded, .Thumb_baseTransition;
       margin-right: $thumbMarginRightBase;
+      font-family: Arial;
+      font-size: 18px;
     }
     display: flex;
     align-items: center;
