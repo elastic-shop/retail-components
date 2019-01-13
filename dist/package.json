@@ -1,6 +1,6 @@
 {
   "name": "@pomkaize/common",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "common UI react Library",
   "main": "index.js",
   "license": "MIT",
