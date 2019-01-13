@@ -40,7 +40,7 @@ export class InputBase extends PureComponent<InputProps> {
             checked,
             onChange,
             ...otherProps } = this.props;
-        return <div className={cnInput(null, [className])}>
+        return <div className={cnInput(null, [className, "CommonText"])}>
             <input type={type} id={id} className={cnInput("Inner")}
                    checked={checked}
                    onChange={onChange}

@@ -81,7 +81,7 @@ export class RangeBase extends React.Component<IPropsRange, IStateRange> {
             secondStopVal = 100;
         }
 
-        return <div className={cnRange({focused: focused && thumbFocused}, [className])}>
+        return <div className={cnRange({focused: focused && thumbFocused}, [className, "CommonText"])}>
             <label htmlFor={id} className={cnRange("Label")}>{text}</label>
             <div className={cnRange("Container")}>
                 <div className={cnRange("Gradient")}

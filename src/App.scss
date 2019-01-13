@@ -1,3 +1,4 @@
+@import "common/variables";
 html, body {
   width: 100%;
 }
@@ -20,4 +21,18 @@ body {
 .App {
   width: 245px;
   background-color: transparent;
+}
+
+.BoldText {
+  font-family: $fontFamily;
+  font-weight: $fontBoldWeight;
+  font-size: $fontBoldSize;
+  line-height: 1;
+}
+
+.CommonText {
+  font-family: $fontFamily;
+  font-weight: $fontCommonWeight;
+  font-size: $fontCommonSize;
+  line-height: 1;
 }

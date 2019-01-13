@@ -1,7 +1,7 @@
 /* colors */
 $blue: #6ee065;
 $title: #333;
-$red:#eb6745;
+$red:#d91624;
 $bred:#ea7b5f;
 $grey:#676767;
 $lightGray: #d8d8d8;
@@ -35,10 +35,17 @@ $inputTransition: all 0.2s ease;
 /* input type range */
 $thumbWidth: 18px;
 $thumbHeight: 18px;
-$thumbMarginRightBase: 10px;
+$thumbMarginRightBase: 0.5rem;
 $thumbColor: lighten($grey, 60%);
 $thumbBorder: $lightGray;
 $thumbBackground: white;
 $trackLight: $inputBorderFocusColor;
 $trackBase: $lightGray;
 $trackHeight: $inputBorderWidth;
+
+/* fonts */
+$fontFamily: Tahoma;
+$fontBoldWeight: 700;
+$fontBoldSize: 1.1rem;
+$fontCommonSize: 0.9rem;
+$fontCommonWeight: 400;

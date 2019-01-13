@@ -5,11 +5,11 @@
   .Input-Label {
     color: #555;
     order: 0;
-    padding-bottom: 5px;
+    padding-bottom: 0.6rem;
   }
   .Input-Inner {
     @extend .Input-rounded;
-    padding: 6px 12px;
+    padding: 0.5rem 1rem;
     color: inherit;
     order: 1;
     border: $inputBorder;

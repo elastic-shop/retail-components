@@ -1,9 +1,10 @@
 import * as React from "react";
-import ReactDOM, {render} from "react-dom";
+import ReactDOM, { render } from "react-dom";
 import "./App.scss";
-import {Input} from "./common/Input";
+import { Input } from "./common/Input";
 import DoubleRangeController from "./examples/DoubleRange/DoubleRangeController";
 import RangeInput from "./common/RangeInput/RangeInput";
+import Button from "./common/Button";
 
 interface IStateApp {
     min: number;
@@ -23,11 +24,12 @@ class App extends React.Component<any, IStateApp> {
             leftVal: 800,
             rightVal: 1000,
             mobile: false,
-            checkbox1: false,
+            checkbox1: false
         };
         this.onChange = this.onChange.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
     }
+
     public onChange = (data: any) => {
         this.setState(data);
     }
@@ -39,9 +41,10 @@ class App extends React.Component<any, IStateApp> {
         // @ts-ignore
         this.setState({[name]: value});
     }
+
     public render() {
         // @ts-ignore
-        const { min, max, leftVal, rightVal, mobile, checkbox } = this.state;
+        const {min, max, leftVal, rightVal, mobile, checkbox} = this.state;
         return <div className="App">
             <div style={{border: "2px solid #eb6745", padding: 20}}>
                 <h1>Library</h1>
@@ -75,6 +78,8 @@ class App extends React.Component<any, IStateApp> {
                        key={3}/>
                 <h2>Range</h2>
                 <DoubleRangeController key={5}/>
+                <h2>Button</h2>
+                <Button text="Кнопка тест"/>
             </div>
             <div style={{border: "2px solid #eb6745", padding: 20, marginTop: 20}}>
                 <h1>Examples</h1>
@@ -86,7 +91,7 @@ class App extends React.Component<any, IStateApp> {
                             max={max}
                             leftVal={leftVal}
                             rightVal={rightVal}
-                            onChange={this.onChange} />
+                            onChange={this.onChange}/>
             </div>
         </div>;
     }
@@ -95,5 +100,5 @@ class App extends React.Component<any, IStateApp> {
 const root = document.getElementById("root");
 
 if (root) {
-    ReactDOM.render(<App/>,  root);
+    ReactDOM.render(<App/>, root);
 }

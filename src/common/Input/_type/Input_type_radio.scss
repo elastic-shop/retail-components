@@ -15,12 +15,12 @@
     &:before {
       @extend .Thumb, .Thumb_rounded, .Thumb_baseTransition;
       margin-right: $thumbMarginRightBase;
-      font-size: 38px;
     }
     display: flex;
     align-items: center;
   }
   .Input-Inner[type="radio"]:checked+.Input-Label:before {
-    content: "·";
+    content: "\2022";
+    line-height: 0.6px;
   }
 }
